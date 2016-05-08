@@ -11,19 +11,19 @@ Every apps who will be listed are in a directory named wiiu/apps/homebrew_name/h
 - sdmc:/
   - wiiu/
     - apps/
-      - homebrew_launcher/
+     - homebrew_launcher/
         - homebrew_launcher.elf
         - meta.xml
         - icon.png
-      - loadiine_gx2/
+     - loadiine_gx2/
        - loadiine_gx2.elf
        - meta.xml
        - icon.png
-      - ddd/
+     - ddd/
        - ddd.elf
        - meta.xml
        - icon.png
-      - ftpiiu/
+     - ftpiiu/
        - ftpiiu.elf
        - meta.xml
        - icon.png
