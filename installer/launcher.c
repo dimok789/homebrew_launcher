@@ -7,7 +7,7 @@
 #define MEM_BASE                                        0xC0800000
 #include "../src/common/common.h"
 #include "../src/common/os_defs.h"
-#include "../../libwiiu/src/coreinit.h"
+#include "coreinit.h"
 
 //! this shouldnt depend on OS
 #define LIB_CODE_RW_BASE_OFFSET                         0xC1000000
