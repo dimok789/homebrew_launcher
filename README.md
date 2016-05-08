@@ -43,3 +43,9 @@ Here is a XML example:
     <short_description>short description</short_description> 
     <long_description>long description</long_description> 
     </app>
+
+#### Building
+
+To build the main application devkitPPC is required as well as some additionally libraries. If not yet done export the path of devkitPPC and devkitPRO to the evironment variables DEVKITPRO and DEVKITPPC. All remaining is to enter the main application path and enter "make". You should get a homebrew_launcher.elf and a homebrew__launcher_dbg.elf in the main path.
+
+To compile the installer application enter the "installer" path on the source code and type "make".
