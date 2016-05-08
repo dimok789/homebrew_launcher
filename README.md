@@ -1,10 +1,10 @@
-# The Homebrew Launcher U
+# The Homebrew Launcher
 
 This is a WiiU homebrew how permit listing homebrew application and run them (like the Homebrew Channel of the Wii, by Team Twiizer).
 
 #### Usage
 
-To use the Homebrew Launcher U (or HBLU, for short) you must copy homebrew_launcher.elf into SD:/wiiu/apps/homebrew_launcher/homebrew_launcher.elf, and run the installer throught your WiiU browser.
+To use the Homebrew Launcher (or HBL, for short) you must copy homebrew_launcher.elf into SD:/wiiu/apps/homebrew_launcher/homebrew_launcher.elf, and run the installer throught your WiiU browser.
 
 Every apps who will be listed are in a directory named wiiu/apps/homebrew_name/homebrew_name.elf. Here is an example:
 
@@ -46,6 +46,6 @@ Here is a XML example:
 
 #### Building
 
-To build the main application devkitPPC is required as well as some additionally libraries. If not yet done export the path of devkitPPC and devkitPRO to the evironment variables DEVKITPRO and DEVKITPPC. All remaining is to enter the main application path and enter "make". You should get a homebrew_launcher.elf and a homebrew__launcher_dbg.elf in the main path.
+To build the main application devkitPPC is required as well as some additionally libraries. Download the libogc and portlibs packages from [the loadiine_gx2  release pages](https://github.com/dimok789/loadiine_gx2/releases/tag/open_beta) and put them in your devkitPro path. Replace any existing files. If not yet done export the path of devkitPPC and devkitPRO to the evironment variables DEVKITPRO and DEVKITPPC. All remaining is to enter the main application path and enter "make". You should get a homebrew_launcher.elf and a homebrew__launcher_dbg.elf in the main path.
 
 To compile the installer application enter the "installer" path on the source code and type "make".
