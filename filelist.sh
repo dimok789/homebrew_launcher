@@ -53,15 +53,6 @@ typedef struct _RecourceFile
 
 EOF
 
-for i in ${files[@]}
-do
-	filename=${i%.*}
-	extension=${i##*.}
-	echo 'extern const unsigned char '$filename'_'$extension'[];' >> $outFile
-	echo 'extern const unsigned int '$filename'_'$extension'_size;' >> $outFile
-	echo '' >> $outFile
-done
-
 echo 'static RecourceFile RecourceList[] =' >> $outFile
 echo '{' >> $outFile
 
@@ -69,7 +60,7 @@ for i in ${files[@]}
 do
 	filename=${i%.*}
 	extension=${i##*.}
-	echo -e '\t{"'$i'", '$filename'_'$extension', '$filename'_'$extension'_size, NULL, 0},' >> $outFile
+	echo -e '\t{"'$i'", NULL, 0, NULL, 0},' >> $outFile
 done
 
 echo -e '\t{NULL, NULL, 0, NULL, 0}' >> $outFile
