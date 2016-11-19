@@ -22,6 +22,7 @@
 #include "gui/Gui.h"
 #include "HomebrewWindow.h"
 #include "gui/GuiParticleImage.h"
+#include "utils/ColorXML.h"
 
 class CVideo;
 
@@ -123,7 +124,9 @@ private:
     GuiImage bgImageColor;
     GuiParticleImage bgParticleImg;
     HomebrewWindow homebrewWindow;
-
+	ColorXML *ColourData;
+	ColorData Color1;
+	ColorData Color2;
     GuiImageData *pointerImgData[4];
     GuiImage *pointerImg[4];
     bool pointerValid[4];

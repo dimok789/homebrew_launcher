@@ -18,6 +18,7 @@
 #define _PROGRESS_WINDOW_H_
 
 #include "gui/Gui.h"
+#include "utils/ColorXML.h"
 
 class ProgressWindow : public GuiFrame, public sigslot::has_slots<>
 {
@@ -38,6 +39,10 @@ private:
 
     GuiTrigger touchTrigger;
     GuiTrigger wpadTouchTrigger;
+
+	ColorXML *ColourData;
+	ColorData Color3;
+	ColorData Color4;
 
     bool titleChanged;
     std::string currentTitle;

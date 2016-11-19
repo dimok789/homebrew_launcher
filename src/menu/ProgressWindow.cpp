@@ -33,11 +33,14 @@ ProgressWindow::ProgressWindow(const std::string & title)
     append(&progressImageColored);
     append(&bgImage);
 
+	ColourData = new ColorXML("fs:/vol/content/color.xml");
+	Color3 = ColourData->GetColor3();
     progressImageColored.setAlignment(ALIGN_TOP_LEFT);
-    progressImageColored.setImageColor((GX2Color){ 42, 159, 217, 255}, 0);
-    progressImageColored.setImageColor((GX2Color){ 42, 159, 217, 255}, 1);
-    progressImageColored.setImageColor((GX2Color){ 13, 104, 133, 255}, 2);
-    progressImageColored.setImageColor((GX2Color){ 13, 104, 133, 255}, 3);
+    progressImageColored.setImageColor((GX2Color){Color3.R,Color3.G,Color3.B,Color3.A}, 0);
+    progressImageColored.setImageColor((GX2Color){Color3.R,Color3.G,Color3.B,Color3.A}, 1);
+	Color4 = ColourData->GetColor4();
+    progressImageColored.setImageColor((GX2Color){Color4.R,Color4.G,Color4.B,Color4.A}, 2);
+    progressImageColored.setImageColor((GX2Color){Color4.R,Color4.G,Color4.B,Color4.A}, 3);
 
     titleText.setColor(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
     titleText.setFontSize(36);
