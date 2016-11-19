@@ -1,7 +1,7 @@
 /****************************************************************************
  * Loadiine resource files.
  * This file is generated automatically.
- * Includes 13 files.
+ * Includes 14 files.
  *
  * NOTE:
  * Any manual modification of this file will be overwriten by the generation.
@@ -23,6 +23,7 @@ static RecourceFile RecourceList[] =
 	{"bgMusic.ogg", NULL, 0, NULL, 0},
 	{"button.png", NULL, 0, NULL, 0},
 	{"button_click.mp3", NULL, 0, NULL, 0},
+	{"color.xml", NULL, 0, NULL, 0},
 	{"font.ttf", NULL, 0, NULL, 0},
 	{"homebrewButton.png", NULL, 0, NULL, 0},
 	{"launchMenuBox.png", NULL, 0, NULL, 0},

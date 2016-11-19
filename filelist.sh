@@ -10,7 +10,7 @@ count=0
 if [[ $OSTYPE == darwin* ]];
 then
 
-for i in $(gfind ./data/images/ ./data/sounds/ ./data/fonts/ -maxdepth 1 -type f  \( ! -printf "%f\n" \) | sort -f)
+for i in $(gfind ./assets/data/ -maxdepth 1 -type f  \( ! -printf "%f\n" \) | sort -f)
 do
 	files[count]=$i
 	count=$((count+1))
@@ -18,7 +18,7 @@ done
 
 else
 
-for i in $(find ./data/images/ ./data/sounds/ ./data/fonts/ -maxdepth 1 -type f  \( ! -printf "%f\n" \) | sort -f)
+for i in $(find ./assets/data/ -maxdepth 1 -type f  \( ! -printf "%f\n" \) | sort -f)
 do
 	files[count]=$i
 	count=$((count+1))
