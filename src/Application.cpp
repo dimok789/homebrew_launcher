@@ -20,6 +20,8 @@
 #include "gui/FreeTypeGX.h"
 #include "gui/VPadController.h"
 #include "gui/WPadController.h"
+#include "gui/DVPadController.h"
+#include "gui/DWPadController.h"
 #include "resources/Resources.h"
 #include "sounds/SoundHandler.hpp"
 #include "utils/logger.h"
@@ -155,6 +157,8 @@ void Application::executeThread(void)
 	    //! Read out inputs
 	    for(int i = 0; i < 5; i++)
         {
+            if(controller[i] == NULL) continue;
+            
             if(controller[i]->update(video->getTvWidth(), video->getTvHeight()) == false)
                 continue;
 
@@ -163,6 +167,64 @@ void Application::executeThread(void)
 
             //! update controller states
             mainWindow->update(controller[i]);
+            
+            //If the + button on the GamePad is pressed, switch to DPAD mode and vice versa.
+            if((i == 0) && (controller[i]->data.buttons_d & GuiTrigger::BUTTON_PLUS))
+            {
+                if(controller[i]->isDPadMode)
+                {
+                    delete controller[i];
+                    controller[i] = new VPadController(GuiTrigger::CHANNEL_1);
+                }
+                else
+                {
+                    delete controller[i];
+                    controller[i] = new DVPadController(GuiTrigger::CHANNEL_1);
+                }
+            }
+            
+            //If the + button on any other controller is pressed, switch to DPAD mode and vice versa.
+            else if(controller[i]->data.buttons_d & GuiTrigger::BUTTON_PLUS)
+            {
+                if(controller[i]->isDPadMode)
+                {
+                    delete controller[i];
+                    switch(i)
+                    {
+                        case 1:
+                            controller[i] = new WPadController(GuiTrigger::CHANNEL_2);
+                            break;
+                        case 2:
+                            controller[i] = new WPadController(GuiTrigger::CHANNEL_3);
+                            break;
+                        case 3:
+                            controller[i] = new WPadController(GuiTrigger::CHANNEL_4);
+                            break;
+                        case 4:
+                            controller[i] = new WPadController(GuiTrigger::CHANNEL_5);
+                            break;
+                    }
+                }
+                else
+                {
+                    delete controller[i];
+                    switch(i)
+                    {
+                        case 1:
+                            controller[i] = new DWPadController(GuiTrigger::CHANNEL_2);
+                            break;
+                        case 2:
+                            controller[i] = new DWPadController(GuiTrigger::CHANNEL_3);
+                            break;
+                        case 3:
+                            controller[i] = new DWPadController(GuiTrigger::CHANNEL_4);
+                            break;
+                        case 4:
+                            controller[i] = new DWPadController(GuiTrigger::CHANNEL_5);
+                            break;
+                    }
+                }
+            }
         }
 
         //! start rendering DRC
