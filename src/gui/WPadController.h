@@ -28,6 +28,7 @@ public:
         : GuiController(channel)
     {
         memset(&kpadData, 0, sizeof(kpadData));
+        showPointer = true;
     }
 
     //!Destructor

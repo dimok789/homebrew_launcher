@@ -34,9 +34,9 @@ MainWindow::MainWindow(int w, int h)
     append(&bgImageColor);
     append(&bgParticleImg);
 
-    for(int i = 0; i < 4; i++)
+    for(int i = 0; i < 5; i++)
     {
-        std::string filename = strfmt("player%i_point.png", i+1);
+        std::string filename = strfmt("player%i_point.png", i);
         pointerImgData[i] = Resources::GetImageData(filename.c_str());
         pointerImg[i] = new GuiImage(pointerImgData[i]);
         pointerImg[i]->setScale(1.5f);
@@ -62,7 +62,7 @@ MainWindow::~MainWindow()
         delete drcElements[0];
         remove(drcElements[0]);
     }
-    for(int i = 0; i < 4; i++)
+    for(int i = 0; i < 5; i++)
     {
         delete pointerImg[i];
         Resources::RemoveImageData(pointerImgData[i]);
@@ -135,14 +135,19 @@ void MainWindow::update(GuiController *controller)
 //        }
 //    }
 
-    if(controller->chanIdx >= 1 && controller->chanIdx <= 4 && controller->data.validPointer)
+    if(controller->showPointer && controller->data.validPointer)
     {
-        int wpadIdx = controller->chanIdx - 1;
+        int wpadIdx = controller->chanIdx;
         f32 posX = controller->data.x;
         f32 posY = controller->data.y;
         pointerImg[wpadIdx]->setPosition(posX, posY);
         pointerImg[wpadIdx]->setAngle(controller->data.pointerAngle);
         pointerValid[wpadIdx] = true;
+    }
+    
+    if(!controller->showPointer)
+    {
+        pointerValid[controller->chanIdx] = false;
     }
 }
 
@@ -153,7 +158,14 @@ void MainWindow::drawDrc(CVideo *video)
         drcElements[i]->draw(video);
     }
 
-    for(int i = 0; i < 4; i++)
+    if(pointerValid[0])
+    {
+        pointerImg[0]->setAlpha(1.0f);
+        pointerImg[0]->draw(video);
+        pointerImg[0]->setAlpha(1.0f);
+    }
+    
+    for(int i = 1; i < 5; i++)
     {
         if(pointerValid[i])
         {
@@ -171,7 +183,14 @@ void MainWindow::drawTv(CVideo *video)
         tvElements[i]->draw(video);
     }
 
-    for(int i = 0; i < 4; i++)
+    if(pointerValid[0])
+    {
+        pointerImg[0]->setAlpha(0.5f);
+        pointerImg[0]->draw(video);
+        pointerImg[0]->setAlpha(1.0f);
+    }
+    
+    for(int i = 1; i < 5; i++)
     {
         if(pointerValid[i])
         {

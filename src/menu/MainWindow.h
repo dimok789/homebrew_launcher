@@ -124,9 +124,9 @@ private:
     GuiParticleImage bgParticleImg;
     HomebrewWindow homebrewWindow;
 
-    GuiImageData *pointerImgData[4];
-    GuiImage *pointerImg[4];
-    bool pointerValid[4];
+    GuiImageData *pointerImgData[5];
+    GuiImage *pointerImg[5];
+    bool pointerValid[5];
 };
 
 #endif //_MAIN_WINDOW_H_
