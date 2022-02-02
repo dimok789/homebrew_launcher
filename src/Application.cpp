@@ -17,6 +17,7 @@
 #include "Application.h"
 #include "common/common.h"
 #include "dynamic_libs/os_functions.h"
+#include "dynamic_libs/sys_functions.h"
 #include "gui/FreeTypeGX.h"
 #include "gui/DVPadController.h"
 #include "gui/DWPadController.h"
@@ -169,7 +170,11 @@ void Application::executeThread(void)
                 continue;
 
             if(controller[i]->data.buttons_d & VPAD_BUTTON_HOME)
+			{
+				if(controller[i]->data.buttons_h & VPAD_BUTTON_MINUS)
+					SYSLaunchMenu();
                 exitApplication = true;
+			}
 
             //! update controller states
             mainWindow->update(controller[i]);
