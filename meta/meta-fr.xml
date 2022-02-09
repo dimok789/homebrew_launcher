@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<app version="1">
+  <name>Homebrew Launcher</name>
+  <coder>Dimok</coder>
+  <version>1.4</version>
+  <release_date>20161116210000</release_date>
+  <short_description>WiiU Homebrew Launcher</short_description> 
+  <long_description>Charge des homebrews Wii U depuis la carte sd et depuis le réseau.
+
+  </long_description> 
+
+</app>
